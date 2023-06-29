@@ -11,6 +11,20 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import braintree
+
+BRAINTREE_ENVIRONMENT = braintree.Environment.Sandbox
+BRAINTREE_MERCHANT_ID = 'wyg3t2m6khxj6jq8'
+BRAINTREE_PUBLIC_KEY = 'bzn5jr9jsqq2kxrr'
+BRAINTREE_PRIVATE_KEY = 'ebaf8c3621c01ab94c0fd6ce125253d1'
+
+braintree.Configuration.configure(
+    BRAINTREE_ENVIRONMENT,
+    merchant_id=BRAINTREE_MERCHANT_ID,
+    public_key=BRAINTREE_PUBLIC_KEY,
+    private_key=BRAINTREE_PRIVATE_KEY
+)
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -56,7 +70,7 @@ ROOT_URLCONF = 'djangopaypal_client.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': []
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
